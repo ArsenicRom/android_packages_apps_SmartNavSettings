@@ -41,9 +41,9 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
-import com.havoc.support.preferences.CustomSeekBarPreference;
+import com.arsenic.support.preferences.CustomSeekBarPreference;
 
-import com.havoc.support.colorpicker.ColorPickerPreference;
+import com.arsenic.support.colorpicker.ColorPickerPreference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -98,7 +98,7 @@ public class PixelAnimDurationSettings extends SettingsPreferenceFragment implem
 
     @Override
     public int getMetricsCategory() {
-        return MetricsEvent.HAVOC_SETTINGS;
+        return MetricsEvent.ARSENIC_SETTINGS;
     }
 
     @Override

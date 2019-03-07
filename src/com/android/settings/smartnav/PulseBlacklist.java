@@ -36,8 +36,8 @@ import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-import com.havoc.support.preferences.PackageListAdapter;
-import com.havoc.support.preferences.PackageListAdapter.PackageItem;
+import com.arsenic.support.preferences.PackageListAdapter;
+import com.arsenic.support.preferences.PackageListAdapter.PackageItem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -98,7 +98,7 @@ public class PulseBlacklist extends SettingsPreferenceFragment implements
     public int getDialogMetricsCategory(int dialogId) {
         switch (dialogId) {
             case DIALOG_BLACKLIST_APPS:
-                return MetricsEvent.HAVOC_SETTINGS;
+                return MetricsEvent.ARSENIC_SETTINGS;
             default:
                 return 0;
         }
@@ -122,7 +122,7 @@ public class PulseBlacklist extends SettingsPreferenceFragment implements
 
     @Override
     public int getMetricsCategory() {
-        return MetricsEvent.HAVOC_SETTINGS;
+        return MetricsEvent.ARSENIC_SETTINGS;
     }
 
     @Override

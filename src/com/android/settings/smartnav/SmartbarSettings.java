@@ -51,7 +51,7 @@ import com.android.internal.util.hwkeys.Config.ButtonConfig;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-import com.havoc.support.preferences.CustomSeekBarPreference;
+import com.arsenic.support.preferences.CustomSeekBarPreference;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -220,7 +220,7 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
             case DIALOG_RESET_CONFIRM:
             case DIALOG_RESTORE_PROFILE:
             case DIALOG_SAVE_PROFILE:
-                return MetricsProto.MetricsEvent.HAVOC_SETTINGS;
+                return MetricsProto.MetricsEvent.ARSENIC_SETTINGS;
             default:
                 return 0;
         }
@@ -453,7 +453,7 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.HAVOC_SETTINGS;
+        return MetricsProto.MetricsEvent.ARSENIC_SETTINGS;
     }
 
     public void updateAnimDurationPref(int buttonAnimVal) {

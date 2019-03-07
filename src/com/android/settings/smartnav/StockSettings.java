@@ -29,7 +29,7 @@ import android.provider.Settings;
 import com.android.internal.logging.nano.MetricsProto; 
 import com.android.settings.SettingsPreferenceFragment;
 
-import com.havoc.settings.R;
+import com.arsenic.settings.R;
 
 public class StockSettings extends SettingsPreferenceFragment {
 
@@ -44,6 +44,6 @@ public class StockSettings extends SettingsPreferenceFragment {
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.HAVOC_SETTINGS;
+        return MetricsProto.MetricsEvent.ARSENIC_SETTINGS;
     }
 }

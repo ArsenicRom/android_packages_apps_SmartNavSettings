@@ -38,7 +38,7 @@ import com.android.internal.util.hwkeys.ActionUtils;
 import com.android.internal.util.hwkeys.Config.ButtonConfig;
 import com.android.settings.R;
 
-import com.havoc.support.preferences.CustomSeekBarPreference;
+import com.arsenic.support.preferences.CustomSeekBarPreference;
 
 import java.util.ArrayList;
 
@@ -203,6 +203,6 @@ public class NavigationBarSettings extends SettingsPreferenceFragment implements
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.HAVOC_SETTINGS;
+        return MetricsProto.MetricsEvent.ARSENIC_SETTINGS;
     }
 }

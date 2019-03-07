@@ -55,8 +55,8 @@ import com.android.settings.smartnav.ActionPreference;
 import com.android.settings.smartnav.IconPickHelper;
 import com.android.settings.smartnav.IconPickHelper.OnPickListener;
 
-import com.havoc.support.preferences.CustomSeekBarPreference;
-import com.havoc.support.colorpicker.ColorPickerPreference;
+import com.arsenic.support.preferences.CustomSeekBarPreference;
+import com.arsenic.support.colorpicker.ColorPickerPreference;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -324,7 +324,7 @@ public class FlingSettings extends ActionFragment implements
             case DIALOG_RESET_CONFIRM:
             case DIALOG_RESTORE_PROFILE:
             case DIALOG_SAVE_PROFILE:
-                return MetricsProto.MetricsEvent.HAVOC_SETTINGS;
+                return MetricsProto.MetricsEvent.ARSENIC_SETTINGS;
             default:
                 return super.getDialogMetricsCategory(dialogId);
         }
@@ -713,6 +713,6 @@ public class FlingSettings extends ActionFragment implements
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.HAVOC_SETTINGS;
+        return MetricsProto.MetricsEvent.ARSENIC_SETTINGS;
     }
 }
