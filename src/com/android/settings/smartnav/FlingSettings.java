@@ -48,7 +48,7 @@ import android.widget.Toast;
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.internal.util.hwkeys.ActionConstants;
 import com.android.internal.util.hwkeys.ActionHandler;
-import com.android.internal.util.hwkeys.ActionUtils;
+import com.android.internal.util.hwkeys.ActionUtil;
 import com.android.internal.util.hwkeys.Config.ButtonConfig;
 import com.android.settings.R;
 import com.android.settings.smartnav.ActionPreference;
@@ -166,7 +166,7 @@ public class FlingSettings extends ActionFragment implements
         mLongPressTimeout.setValue(val);
         mLongPressTimeout.setOnPreferenceChangeListener(this);
 
-        mIsTablet = !ActionUtils.navigationBarCanMove();
+        mIsTablet = !ActionUtil.navigationBarCanMove();
 
         mSwipePortRight = (CustomSeekBarPreference) findPreference("du_fling_longswipe_port_right");
         val = Settings.Secure.getIntForUser(

@@ -45,7 +45,7 @@ import android.widget.Toast;
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.internal.util.hwkeys.ActionConstants;
 import com.android.internal.util.hwkeys.ActionHandler;
-import com.android.internal.util.hwkeys.ActionUtils;
+import com.android.internal.util.hwkeys.ActionUtil;
 import com.android.internal.util.hwkeys.Config;
 import com.android.internal.util.hwkeys.Config.ButtonConfig;
 import com.android.settings.R;
@@ -309,7 +309,7 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
         Config.setConfig(getActivity(),
                 ActionConstants.getDefaults(ActionConstants.SMARTBAR),
                 buttonConfigs);
-        Intent intent = new Intent(ActionUtils.INTENT_NAVBAR_EDIT_RESET_LAYOUT);
+        Intent intent = new Intent(ActionUtil.INTENT_NAVBAR_EDIT_RESET_LAYOUT);
         ActionHandler.dispatchNavigationEditorResult(intent);
 
         Settings.Secure.putInt(getContentResolver(),

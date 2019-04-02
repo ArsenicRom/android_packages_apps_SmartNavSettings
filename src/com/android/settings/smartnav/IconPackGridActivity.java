@@ -33,7 +33,7 @@ import java.util.Set;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
-import com.android.internal.util.hwkeys.ActionUtils;
+import com.android.internal.util.hwkeys.ActionUtil;
 import com.android.settings.R;
 
 import android.app.Activity;
@@ -83,7 +83,7 @@ public class IconPackGridActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // intent with package name is REQUIRED here
-        mPackageName = getIntent().getStringExtra(ActionUtils.INTENT_EXTRA_ICON_PACKAGE_NAME);
+        mPackageName = getIntent().getStringExtra(ActionUtil.INTENT_EXTRA_ICON_PACKAGE_NAME);
         if (mPackageName == null) {
             setResult(RESULT_CANCELED);
             finish();
@@ -138,9 +138,9 @@ public class IconPackGridActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 IconInfo info = (IconInfo) parent.getItemAtPosition(position);
                 Intent resultIntent = new Intent();
-                resultIntent.putExtra(ActionUtils.INTENT_EXTRA_ICON_DATA_TYPE, ActionUtils.INTENT_EXTRA_ICON_DATA_TYPE_ICON_PACK);
-                resultIntent.putExtra(ActionUtils.INTENT_EXTRA_ICON_DATA_PACKAGE, mPackageName);
-                resultIntent.putExtra(ActionUtils.INTENT_EXTRA_ICON_DATA_NAME, info.name);
+                resultIntent.putExtra(ActionUtil.INTENT_EXTRA_ICON_DATA_TYPE, ActionUtil.INTENT_EXTRA_ICON_DATA_TYPE_ICON_PACK);
+                resultIntent.putExtra(ActionUtil.INTENT_EXTRA_ICON_DATA_PACKAGE, mPackageName);
+                resultIntent.putExtra(ActionUtil.INTENT_EXTRA_ICON_DATA_NAME, info.name);
                 IconPackGridActivity.this.setResult(RESULT_OK, resultIntent);
                 IconPackGridActivity.this.finish();
             }

@@ -20,7 +20,7 @@ package com.android.settings.smartnav;
 import java.io.File;
 
 import com.android.internal.util.hwkeys.ActionHandler;
-import com.android.internal.util.hwkeys.ActionUtils;
+import com.android.internal.util.hwkeys.ActionUtil;
 import com.android.internal.util.hwkeys.ImageHelper;
 
 import android.app.Activity;
@@ -54,8 +54,8 @@ public class IconPickerGallery extends Activity {
         if (resultCode == Activity.RESULT_OK && requestCode == 69) {
             Bitmap b = null;
             try {
-                if (ActionUtils.isBitmapAllowedSize(this, data.getData(),
-                        ActionUtils.SMARTNAV_ICON_MAX_WIDTH, ActionUtils.SMARTNAV_ICON_MAX_HEIGHT)) {
+                if (ActionUtil.isBitmapAllowedSize(this, data.getData(),
+                        ActionUtil.SMARTNAV_ICON_MAX_WIDTH, ActionUtil.SMARTNAV_ICON_MAX_HEIGHT)) {
                     b = ImageHelper.getBitmapFromUri(this, data.getData());
                     if (b != null) {
                         File dir = new File(Environment.getExternalStorageDirectory() + File.separator
@@ -72,9 +72,9 @@ public class IconPickerGallery extends Activity {
                             sendCancelResultAndFinish();
                         } else {
                             Intent resultIntent = new Intent();
-                            resultIntent.setAction(ActionUtils.INTENT_GALLERY_PICKER);
-                            resultIntent.putExtra(ActionUtils.INTENT_EXTRA_RESULT, Activity.RESULT_OK);
-                            resultIntent.putExtra(ActionUtils.INTENT_EXTRA_URI, newUri.toString());
+                            resultIntent.setAction(ActionUtil.INTENT_GALLERY_PICKER);
+                            resultIntent.putExtra(ActionUtil.INTENT_EXTRA_RESULT, Activity.RESULT_OK);
+                            resultIntent.putExtra(ActionUtil.INTENT_EXTRA_URI, newUri.toString());
                             ActionHandler.dispatchNavigationEditorResult(resultIntent);
                             setResult(RESULT_OK, resultIntent);
                             finish();
@@ -101,8 +101,8 @@ public class IconPickerGallery extends Activity {
     }
 
     private void sendCancelResultAndFinish() {
-        Intent intent = new Intent(ActionUtils.INTENT_GALLERY_PICKER);
-        intent.putExtra(ActionUtils.INTENT_EXTRA_RESULT, Activity.RESULT_CANCELED);
+        Intent intent = new Intent(ActionUtil.INTENT_GALLERY_PICKER);
+        intent.putExtra(ActionUtil.INTENT_EXTRA_RESULT, Activity.RESULT_CANCELED);
         ActionHandler.dispatchNavigationEditorResult(intent);
         setResult(Activity.RESULT_CANCELED);
         finish();

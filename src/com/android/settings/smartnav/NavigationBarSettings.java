@@ -34,7 +34,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.internal.util.hwkeys.ActionConstants;
 import com.android.internal.util.hwkeys.Config;
-import com.android.internal.util.hwkeys.ActionUtils;
+import com.android.internal.util.hwkeys.ActionUtil;
 import com.android.internal.util.hwkeys.Config.ButtonConfig;
 import com.android.settings.R;
 
@@ -84,7 +84,7 @@ public class NavigationBarSettings extends SettingsPreferenceFragment implements
 
         boolean showing = Settings.Secure.getInt(getContentResolver(),
                 Settings.Secure.NAVIGATION_BAR_VISIBLE,
-                ActionUtils.hasNavbarByDefault(getActivity()) ? 1 : 0) != 0;
+                ActionUtil.hasNavbarByDefault(getActivity()) ? 1 : 0) != 0;
         updateBarVisibleAndUpdatePrefs(showing);
         mNavbarVisibility.setOnPreferenceChangeListener(this);
 
@@ -100,7 +100,7 @@ public class NavigationBarSettings extends SettingsPreferenceFragment implements
         mBarHeightPort.setValue(size);
         mBarHeightPort.setOnPreferenceChangeListener(this);
 
-        final boolean canMove = ActionUtils.navigationBarCanMove();
+        final boolean canMove = ActionUtil.navigationBarCanMove();
         if (canMove) {
             mNavGeneral.removePreference(findPreference(KEY_NAVIGATION_HEIGHT_LAND));
             size = Settings.Secure.getIntForUser(getContentResolver(),

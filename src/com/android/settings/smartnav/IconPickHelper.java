@@ -32,7 +32,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.android.internal.util.hwkeys.ActionUtils;
+import com.android.internal.util.hwkeys.ActionUtil;
 import com.android.settings.R;
 
 public class IconPickHelper {
@@ -60,16 +60,16 @@ public class IconPickHelper {
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
                 case REQUEST_CODE_ICON_PACK:
-                    String iconType = data.getStringExtra(ActionUtils.INTENT_EXTRA_ICON_DATA_TYPE);
-                    String iconPackage = data.getStringExtra(ActionUtils.INTENT_EXTRA_ICON_DATA_PACKAGE);
-                    String iconName = data.getStringExtra(ActionUtils.INTENT_EXTRA_ICON_DATA_NAME);
+                    String iconType = data.getStringExtra(ActionUtil.INTENT_EXTRA_ICON_DATA_TYPE);
+                    String iconPackage = data.getStringExtra(ActionUtil.INTENT_EXTRA_ICON_DATA_PACKAGE);
+                    String iconName = data.getStringExtra(ActionUtil.INTENT_EXTRA_ICON_DATA_NAME);
                     mListener.iconPicked(iconType, iconPackage, iconName);
                     break;
                 case REQUEST_CODE_GALLERY:
                     Bitmap b = null;
                     try {
-                        if (ActionUtils.isBitmapAllowedSize(mParent, data.getData(),
-                                ActionUtils.SMARTNAV_ICON_MAX_WIDTH, ActionUtils.SMARTNAV_ICON_MAX_HEIGHT)) {
+                        if (ActionUtil.isBitmapAllowedSize(mParent, data.getData(),
+                                ActionUtil.SMARTNAV_ICON_MAX_WIDTH, ActionUtil.SMARTNAV_ICON_MAX_HEIGHT)) {
                             b = ImageHelper.getBitmapFromUri(mParent, data.getData());
                             if (b != null) {
                                 File dir = new File(Environment.getExternalStorageDirectory()
@@ -117,7 +117,7 @@ public class IconPickHelper {
         if (requestType == REQUEST_PICK_ICON_PACK) {
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_MAIN);
-            intent.setClassName(ActionUtils.PACKAGE_SETTINGS, ActionUtils.CLASS_NAME_ICON_PICKER_ACTIVITY);
+            intent.setClassName(ActionUtil.PACKAGE_SETTINGS, ActionUtil.CLASS_NAME_ICON_PICKER_ACTIVITY);
             startFragmentOrActivity(intent, REQUEST_CODE_ICON_PACK);
         } else if (requestType == REQUEST_PICK_ICON_GALLERY) {
             Intent intent = new Intent();

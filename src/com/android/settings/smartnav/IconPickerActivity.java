@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.android.internal.util.hwkeys.ActionHandler;
-import com.android.internal.util.hwkeys.ActionUtils;
+import com.android.internal.util.hwkeys.ActionUtil;
 import com.android.settings.R;
 
 import android.app.Activity;
@@ -108,9 +108,9 @@ public class IconPickerActivity extends Activity implements DialogInterface.OnCa
                 ResolveInfo info = adapter.getItem(position);
                 String packageName = info.activityInfo.packageName;
                 Intent intent = new Intent();
-                intent.setClassName(ActionUtils.PACKAGE_SETTINGS,
-                        ActionUtils.CLASS_NAME_ICON_PICKER_GRID_ACTIVITY);
-                intent.putExtra(ActionUtils.INTENT_EXTRA_ICON_PACKAGE_NAME, packageName);
+                intent.setClassName(ActionUtil.PACKAGE_SETTINGS,
+                        ActionUtil.CLASS_NAME_ICON_PICKER_GRID_ACTIVITY);
+                intent.putExtra(ActionUtil.INTENT_EXTRA_ICON_PACKAGE_NAME, packageName);
                 dialog.dismiss();
                 startActivityForResult(intent, ICON_PACK_ICON_RESULT);
             }
@@ -125,8 +125,8 @@ public class IconPickerActivity extends Activity implements DialogInterface.OnCa
     }
 
     private void sendCancelResultAndFinish() {
-        Intent intent = new Intent(ActionUtils.INTENT_ICON_PICKER);
-        intent.putExtra(ActionUtils.INTENT_EXTRA_RESULT, Activity.RESULT_CANCELED);
+        Intent intent = new Intent(ActionUtil.INTENT_ICON_PICKER);
+        intent.putExtra(ActionUtil.INTENT_EXTRA_RESULT, Activity.RESULT_CANCELED);
         ActionHandler.dispatchNavigationEditorResult(intent);
         setResult(Activity.RESULT_CANCELED);
         finish();
@@ -136,15 +136,15 @@ public class IconPickerActivity extends Activity implements DialogInterface.OnCa
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == ICON_PACK_ICON_RESULT) {
             if (resultCode == RESULT_OK) {
-                String iconType = data.getStringExtra(ActionUtils.INTENT_EXTRA_ICON_DATA_TYPE);
-                String iconPackage = data.getStringExtra(ActionUtils.INTENT_EXTRA_ICON_DATA_PACKAGE);
-                String iconName = data.getStringExtra(ActionUtils.INTENT_EXTRA_ICON_DATA_NAME);
+                String iconType = data.getStringExtra(ActionUtil.INTENT_EXTRA_ICON_DATA_TYPE);
+                String iconPackage = data.getStringExtra(ActionUtil.INTENT_EXTRA_ICON_DATA_PACKAGE);
+                String iconName = data.getStringExtra(ActionUtil.INTENT_EXTRA_ICON_DATA_NAME);
                 Intent resultIntent = new Intent();
-                resultIntent.setAction(ActionUtils.INTENT_ICON_PICKER);
-                resultIntent.putExtra(ActionUtils.INTENT_EXTRA_RESULT, Activity.RESULT_OK);
-                resultIntent.putExtra(ActionUtils.INTENT_EXTRA_ICON_DATA_TYPE, iconType);
-                resultIntent.putExtra(ActionUtils.INTENT_EXTRA_ICON_DATA_PACKAGE, iconPackage);
-                resultIntent.putExtra(ActionUtils.INTENT_EXTRA_ICON_DATA_NAME, iconName);
+                resultIntent.setAction(ActionUtil.INTENT_ICON_PICKER);
+                resultIntent.putExtra(ActionUtil.INTENT_EXTRA_RESULT, Activity.RESULT_OK);
+                resultIntent.putExtra(ActionUtil.INTENT_EXTRA_ICON_DATA_TYPE, iconType);
+                resultIntent.putExtra(ActionUtil.INTENT_EXTRA_ICON_DATA_PACKAGE, iconPackage);
+                resultIntent.putExtra(ActionUtil.INTENT_EXTRA_ICON_DATA_NAME, iconName);
                 ActionHandler.dispatchNavigationEditorResult(resultIntent);
                 setResult(RESULT_OK, resultIntent);
                 finish();

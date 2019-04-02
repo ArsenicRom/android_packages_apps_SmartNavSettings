@@ -20,7 +20,7 @@
 package com.android.settings.smartnav;
 
 import com.android.internal.util.hwkeys.ActionHandler;
-import com.android.internal.util.hwkeys.ActionUtils;
+import com.android.internal.util.hwkeys.ActionUtil;
 import com.android.internal.util.hwkeys.Config.ActionConfig;
 import com.android.settings.R;
 import com.android.settings.smartnav.CustomActionListAdapter;
@@ -48,8 +48,8 @@ public class ActionPickerDialogActivity extends Activity implements
         super.onCreate(savedInstanceState);
         mPicker = new ShortcutPickHelper(this, this);
         mCustomActionListAdapter = new CustomActionListAdapter(this);
-        mHasDefault = getIntent().getBooleanExtra(ActionUtils.INTENT_EXTRA_ACTION_HAS_DEFAULTS, false);
-        String[] excludedActions = getIntent().getStringArrayExtra(ActionUtils.INTENT_EXTRA_EXCLUDE_ACTIONS);
+        mHasDefault = getIntent().getBooleanExtra(ActionUtil.INTENT_EXTRA_ACTION_HAS_DEFAULTS, false);
+        String[] excludedActions = getIntent().getStringArrayExtra(ActionUtil.INTENT_EXTRA_EXCLUDE_ACTIONS);
         if (excludedActions != null) {
             for (int i = 0; i < excludedActions.length; i ++) {
                 mCustomActionListAdapter.removeAction(excludedActions[i]);
@@ -125,19 +125,19 @@ public class ActionPickerDialogActivity extends Activity implements
     }
 
     private void sendResultAndFinish(String result) {
-        Intent intent = new Intent(ActionUtils.INTENT_ACTION_ACTION_PICKER);
-        intent.putExtra(ActionUtils.INTENT_EXTRA_RESULT, Activity.RESULT_OK);
-        intent.putExtra(ActionUtils.INTENT_EXTRA_ACTION_STRING, result);
+        Intent intent = new Intent(ActionUtil.INTENT_ACTION_ACTION_PICKER);
+        intent.putExtra(ActionUtil.INTENT_EXTRA_RESULT, Activity.RESULT_OK);
+        intent.putExtra(ActionUtil.INTENT_EXTRA_ACTION_STRING, result);
         ActionConfig actionConfig = new ActionConfig(this, result);
-        intent.putExtra(ActionUtils.INTENT_EXTRA_ACTION_CONFIG, actionConfig);
+        intent.putExtra(ActionUtil.INTENT_EXTRA_ACTION_CONFIG, actionConfig);
         ActionHandler.dispatchNavigationEditorResult(intent);
         setResult(Activity.RESULT_OK, intent);
         finish();
     }
 
     private void sendCancelResultAndFinish() {
-        Intent intent = new Intent(ActionUtils.INTENT_ACTION_ACTION_PICKER);
-        intent.putExtra(ActionUtils.INTENT_EXTRA_RESULT, Activity.RESULT_CANCELED);
+        Intent intent = new Intent(ActionUtil.INTENT_ACTION_ACTION_PICKER);
+        intent.putExtra(ActionUtil.INTENT_EXTRA_RESULT, Activity.RESULT_CANCELED);
         ActionHandler.dispatchNavigationEditorResult(intent);
         setResult(Activity.RESULT_CANCELED);
         finish();
@@ -162,7 +162,7 @@ public class ActionPickerDialogActivity extends Activity implements
         if (uri == null) {
             sendCancelResultAndFinish();
         } else if (uri.equals(getString(R.string.action_value_default_action))) {
-            sendResultAndFinish(ActionUtils.INTENT_EXTRA_ACTION_DEFAULT);
+            sendResultAndFinish(ActionUtil.INTENT_EXTRA_ACTION_DEFAULT);
         } else if (uri.equals(getString(R.string.action_value_select_app))) {
             mPicker.pickShortcut(null, null, 0);
         } else if (uri.equals(getString(R.string.action_value_custom_action))) {
