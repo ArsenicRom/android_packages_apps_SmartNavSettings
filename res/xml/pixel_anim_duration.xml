@@ -19,12 +19,6 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings" 
     android:title ="@string/pixel_anim_title">
 
-    <Preference
-        android:title="@string/pixel_anim_title"
-        android:summary="@string/pixel_anim_warning"
-        android:icon="@drawable/pixel_navbar_icon"
-        android:selectable="false"/>
-
     <com.arsenic.support.preferences.CustomSeekBarPreference
         android:key="opa_anim_duration_x"
         android:title="@string/pixel_anim_x_title"
@@ -110,19 +104,23 @@
 
         <com.arsenic.support.colorpicker.ColorPickerPreference
             android:key="dot_top_color"
-            android:title="@string/dot_top_color_title" />
+            android:title="@string/dot_top_color_title"
+            settings:defaultColorValue="0xffff0000" />
 
         <com.arsenic.support.colorpicker.ColorPickerPreference
             android:key="dot_left_color"
-            android:title="@string/dot_left_color_title" />
+            android:title="@string/dot_left_color_title"
+            settings:defaultColorValue="0xff0000ff" />
 
         <com.arsenic.support.colorpicker.ColorPickerPreference
             android:key="dot_right_color"
-            android:title="@string/dot_right_color_title" />
+            android:title="@string/dot_right_color_title"
+            settings:defaultColorValue="0xff00ff00" />
 
         <com.arsenic.support.colorpicker.ColorPickerPreference
             android:key="dot_bottom_color"
-            android:title="@string/dot_bottom_color_title" />
+            android:title="@string/dot_bottom_color_title"
+            settings:defaultColorValue="0xffffff00" />
 
     </PreferenceCategory>
 
