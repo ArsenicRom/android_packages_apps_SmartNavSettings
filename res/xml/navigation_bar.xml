@@ -16,13 +16,14 @@
 -->
 
 <PreferenceScreen
-    android:title="@string/bottom_nav_navigation_title"
+    android:title="@string/navigation_title"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings" >
 
     <SwitchPreference
         android:key="navbar_visibility"
-        android:title="@string/navbar_visibility" />
+        android:title="@string/bottom_nav_navigation_title"
+        android:summary="@string/bottom_nav_navigation_summary" />
 
     <PreferenceCategory
         android:key="category_navbar_interface"
@@ -35,6 +36,12 @@
             android:entries="@array/systemui_navbar_mode_entries"
             android:entryValues="@array/systemui_navbar_mode_values" />
 
+        <Preference
+            android:key="default_settings"
+            android:title="@string/default_settings"
+            android:summary="@string/default_settings_summary"
+            android:fragment="com.android.settings.smartnav.StockSettings" />
+
         <PreferenceScreen
             android:key="smartbar_settings"
             android:title="@string/smartbar_settings_title"
@@ -46,12 +53,6 @@
             android:title="@string/fling_settings"
             android:summary="@string/fling_settings_summary"
             android:fragment="com.android.settings.smartnav.FlingSettings" />
-
-        <Preference
-            android:key="default_settings"
-            android:title="@string/default_settings"
-            android:summary="@string/default_settings_summary"
-            android:fragment="com.android.settings.smartnav.StockSettings" />
 
     </PreferenceCategory>
     
@@ -83,11 +84,12 @@
             settings:units="%"
             android:defaultValue="100" />
 
-        <PreferenceScreen
-            android:key="pulse_settings"
+        <com.arsenic.support.preferences.SecureSettingMasterSwitchPreference
+            android:key="eos_fling_show_pulse"
+            android:fragment="com.android.settings.smartnav.PulseSettings"
             android:title="@string/pulse_settings"
             android:summary="@string/pulse_settings_summary"
-            android:fragment="com.android.settings.smartnav.PulseSettings" />
+            android:defaultValue="false" />
     </PreferenceCategory>
 
 </PreferenceScreen>
